@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-fzd74a
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-fzd74a
+  namespace: my-nginx-fzd74a
+  labels:
+    name: nginx-fzd74a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-fzd74a
+  template:
+    metadata:
+      namespace: my-nginx-fzd74a
+      labels:
+        name: nginx-fzd74a
+    spec:
+      containers:
+      - name: nginx-fzd74a
+        image: nginx
+        ports:
+        - containerPort: 80
+
